@@ -1,6 +1,6 @@
 <?php
 if (empty($_POST['usuario']) || empty($_POST['password'])) {
-    header('Location: ../');
+  header('Location: ../');
 }
 
 // region --- Conexión a la BBDD ---
@@ -14,7 +14,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 // endregion
 
@@ -22,7 +22,7 @@ $sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND
 $result = $conn->query($sql);
 
 if ($result->num_rows == 0) {
-    header('Location: ../');
+  header('Location: ../');
 }
 
 $userdata = $result->fetch_assoc();
@@ -46,45 +46,11 @@ $userdata = $result->fetch_assoc();
 </header>
 
 <div class="contenedor">
-    <h3>Notas:</h3>
-    <?php
-    $sql = "SELECT * FROM `notas` WHERE `autor` = " . $userdata['id'] . " ORDER BY `fecha` DESC";
-    $result = $conn->query($sql);
-
-    /**
-     * @param $contenido
-     * @return string
-     */
-    function resumirContenido($contenido)
-    {
-        if(strlen($contenido) <= 100) {
-            return $contenido;
-        }
-        return substr($contenido, 0, 100) . " [...]";
-    }
-
-    /**
-     * @param $fecha
-     * @return mixed
-     */
-    function formatearFecha($fecha)
-    {
-        setlocale(LC_ALL, 'es_ES.UTF-8', 'es_ES', 'esp', 'es');
-        $date = date_create($fecha);
-        return strftime("%d de %b del %Y", strtotime($fecha));
-    }
-
-    while ($nota = $result->fetch_assoc()) { ?>
-        <div class="nota">
-            <h2><?php echo ucfirst($nota['titulo']); ?></h2>
-            <div class="fecha">
-                <?php echo formatearFecha($nota['fecha']); ?>
-            </div>
-            <div>
-                <?php echo resumirContenido($nota['contenido']); ?>
-            </div>
-        </div>
-    <?php } ?>
+  <?php
+  
+  include 'includes/' . ($userdata['rol'] == "gestor" ? 'inicio-gestor.inc' : 'inicio-vendedor.inc');
+  
+  ?>
 </div>
 
 </body>
