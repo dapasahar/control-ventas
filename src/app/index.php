@@ -3,25 +3,16 @@ if (empty($_POST['usuario']) || empty($_POST['password'])) {
   header('Location: ../');
 }
 
-// region --- Conexión a la BBDD ---
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "control-ventas";
+include 'control-ventas.inc';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+/* $sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND `password` = SHA1('" . $_POST['password'] . "')";
+echo $sql;
+$result = $conn->query($sql); */
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-// endregion
+$sentencia = "SELECT * FROM usuarios WHERE email = ? AND password = SHA1(?)";
+$result = $conn->execute_query($sentencia, array($_POST['usuario'], $_POST['password']));
 
-$sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND `password` = '" . $_POST['password'] . "'";
-$result = $conn->query($sql);
-
-if ($result->num_rows == 0) {
+if ($result->num_rows != 1) {
   header('Location: ../');
 }
 

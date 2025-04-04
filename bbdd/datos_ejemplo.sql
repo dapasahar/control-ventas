@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2025 a las 12:48:48
+-- Tiempo de generación: 04-04-2025 a las 13:43:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,18 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `control-ventas`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clientes`
---
-
-CREATE TABLE `clientes` (
-  `nombre` varchar(100) NOT NULL,
-  `email` varchar(254) DEFAULT NULL,
-  `telefono` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -59,49 +47,24 @@ INSERT INTO `clientes` (`nombre`, `email`, `telefono`) VALUES
 ('Yadel', 'olandaj@a8.net', '494-595-1073'),
 ('Youbridge', 'bmacfarlaned@youbridge.nl', '207-565-6399');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cuentas`
---
-
-CREATE TABLE `cuentas` (
-  `email` varchar(254) NOT NULL,
-  `password` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Volcado de datos para la tabla `cuentas`
 --
 
 INSERT INTO `cuentas` (`email`, `password`) VALUES
-('alafaye1@nsw.gov.au', '502-965-0061'),
-('bfoye1@unicef.org', '211-488-9256'),
-('cetienne9@fc2.com', '574-530-1589'),
-('fmccree2@geocities.jp', '855-590-3921'),
-('ivittel3@storify.com', '158-515-0746'),
-('klimbrick6@tiny.cc', '412-205-4063'),
-('lwinstone0@sphinn.com', '389-614-6839'),
-('mcurle8@netscape.com', '416-597-1499'),
-('mgoult4@creativecommons.org', '642-818-7816'),
-('nerlam7@sun.com', '448-374-7564'),
-('pbabbidge2@businesswire.com', '416-410-9530'),
-('rdennistoun0@gravatar.com', '689-464-9493'),
-('ubradforth5@google.fr', '602-852-4100');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `gestores`
---
-
-CREATE TABLE `gestores` (
-  `id` int(11) NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
-  `telefono` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+('alafaye1@nsw.gov.au', 'a32f2e6d43d0ae791cb4bb14fcf79d952444fd88'),
+('bfoye1@unicef.org', '0b781d5e0247323b8c930209e10e06777566833f'),
+('cetienne9@fc2.com', '8a144866fecbedcf1f9226e77cb03f629170c583'),
+('fmccree2@geocities.jp', '4d7f5d41ca5f3895657d1661bb6bb2b218358a05'),
+('ivittel3@storify.com', 'e43f6aea536f614931f0a67fcaf8fe1960575be8'),
+('klimbrick6@tiny.cc', '55e159f9b6275524742fff028547e51c303a43d6'),
+('lwinstone0@sphinn.com', '9e847058f1ab598ec00393e10abf66c25d232c6a'),
+('mcurle8@netscape.com', '4bd3da29e85f752efd145f1c7a2c399553117f40'),
+('mgoult4@creativecommons.org', '937ddb35cf4d7799bd66d7caf0edb51ae37f7dfc'),
+('nerlam7@sun.com', '4b9c2b47e057daef2fd3f6d84835ab3616851d66'),
+('pbabbidge2@businesswire.com', 'f0f9d1b7c3d0279b2f27ddf1b2cf11260dc502e4'),
+('rdennistoun0@gravatar.com', '169e3ea348a8a2ddd4db40a183584887a96946b7'),
+('ubradforth5@google.fr', 'b639398790ac6e836abf1836339701214e4ca303');
 
 --
 -- Volcado de datos para la tabla `gestores`
@@ -111,17 +74,6 @@ INSERT INTO `gestores` (`id`, `email`, `nombre`, `apellidos`, `telefono`) VALUES
 (1, 'lwinstone0@sphinn.com', 'Lombard', 'Winstone', '389-614-6839'),
 (2, 'alafaye1@nsw.gov.au', 'Alie', 'Lafaye', '502-965-0061'),
 (3, 'pbabbidge2@businesswire.com', 'Philipa', 'Babbidge', '416-410-9530');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `menciones_clientes`
---
-
-CREATE TABLE `menciones_clientes` (
-  `nota` int(11) NOT NULL,
-  `cliente` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `menciones_clientes`
@@ -136,17 +88,6 @@ INSERT INTO `menciones_clientes` (`nota`, `cliente`) VALUES
 (9, 'Thoughtmix'),
 (11, 'Jetpulse');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `menciones_vendedores`
---
-
-CREATE TABLE `menciones_vendedores` (
-  `nota` int(11) NOT NULL,
-  `vendedor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Volcado de datos para la tabla `menciones_vendedores`
 --
@@ -159,17 +100,6 @@ INSERT INTO `menciones_vendedores` (`nota`, `vendedor`) VALUES
 (9, 5),
 (14, 8),
 (14, 9);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `menciones_ventas`
---
-
-CREATE TABLE `menciones_ventas` (
-  `nota` int(11) NOT NULL,
-  `venta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `menciones_ventas`
@@ -186,20 +116,6 @@ INSERT INTO `menciones_ventas` (`nota`, `venta`) VALUES
 (13, 473),
 (14, 766),
 (15, 738);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `notas`
---
-
-CREATE TABLE `notas` (
-  `id` int(11) NOT NULL,
-  `autor` int(11) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
-  `contenido` text DEFAULT NULL,
-  `fecha` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `notas`
@@ -222,85 +138,6 @@ INSERT INTO `notas` (`id`, `autor`, `titulo`, `contenido`, `fecha`) VALUES
 (14, 1, 'erat id mauris vulputate elementum', 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.', '2024-07-04'),
 (15, 1, 'augue luctus tincidunt', 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', '2024-07-22');
 
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `notas_menciones`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `notas_menciones` (
-`id` int(11)
-,`autor` int(11)
-,`titulo` varchar(255)
-,`contenido` text
-,`fecha` date
-,`vendedor` int(11)
-,`cliente` varchar(100)
-,`venta` int(11)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `usuarios`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `usuarios` (
-`id` int(11)
-,`email` varchar(254)
-,`nombre` varchar(50)
-,`apellidos` varchar(100)
-,`telefono` varchar(15)
-,`password` varchar(30)
-,`rol` varchar(8)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `usuarios_gestores`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `usuarios_gestores` (
-`id` int(11)
-,`email` varchar(254)
-,`nombre` varchar(50)
-,`apellidos` varchar(100)
-,`telefono` varchar(15)
-,`password` varchar(30)
-,`rol` varchar(6)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `usuarios_vendedores`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `usuarios_vendedores` (
-`id` int(11)
-,`email` varchar(254)
-,`nombre` varchar(50)
-,`apellidos` varchar(100)
-,`telefono` varchar(15)
-,`password` varchar(30)
-,`rol` varchar(8)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vendedores`
---
-
-CREATE TABLE `vendedores` (
-  `id` int(11) NOT NULL,
-  `email` varchar(254) DEFAULT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
-  `telefono` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Volcado de datos para la tabla `vendedores`
 --
@@ -316,20 +153,6 @@ INSERT INTO `vendedores` (`id`, `email`, `nombre`, `apellidos`, `telefono`) VALU
 (8, 'nerlam7@sun.com', 'Nickie', 'Erlam', '448-374-7564'),
 (9, 'mcurle8@netscape.com', 'Missie', 'Curle', '416-597-1499'),
 (10, 'cetienne9@fc2.com', 'Cordelie', 'Etienne', '574-530-1589');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ventas`
---
-
-CREATE TABLE `ventas` (
-  `id` int(11) NOT NULL,
-  `vendedor` int(11) NOT NULL,
-  `cliente` varchar(100) NOT NULL,
-  `fecha` date NOT NULL DEFAULT current_timestamp(),
-  `total` decimal(12,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ventas`
@@ -1336,186 +1159,6 @@ INSERT INTO `ventas` (`id`, `vendedor`, `cliente`, `fecha`, `total`) VALUES
 (998, 4, 'Skaboo', '2025-06-28', 1641.79),
 (999, 6, 'Bubblebox', '2024-09-07', 9848.75),
 (1000, 9, 'Thoughtmix', '2025-02-02', 9463.56);
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `notas_menciones`
---
-DROP TABLE IF EXISTS `notas_menciones`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `notas_menciones`  AS SELECT `notas`.`id` AS `id`, `notas`.`autor` AS `autor`, `notas`.`titulo` AS `titulo`, `notas`.`contenido` AS `contenido`, `notas`.`fecha` AS `fecha`, `menciones_vendedores`.`vendedor` AS `vendedor`, `menciones_clientes`.`cliente` AS `cliente`, `menciones_ventas`.`venta` AS `venta` FROM (((`notas` left join `menciones_vendedores` on(`notas`.`id` = `menciones_vendedores`.`nota`)) left join `menciones_clientes` on(`notas`.`id` = `menciones_clientes`.`nota`)) left join `menciones_ventas` on(`notas`.`id` = `menciones_ventas`.`nota`)) ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `usuarios`
---
-DROP TABLE IF EXISTS `usuarios`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios`  AS SELECT `usuarios_vendedores`.`id` AS `id`, `usuarios_vendedores`.`email` AS `email`, `usuarios_vendedores`.`nombre` AS `nombre`, `usuarios_vendedores`.`apellidos` AS `apellidos`, `usuarios_vendedores`.`telefono` AS `telefono`, `usuarios_vendedores`.`password` AS `password`, `usuarios_vendedores`.`rol` AS `rol` FROM `usuarios_vendedores`union select `usuarios_gestores`.`id` AS `id`,`usuarios_gestores`.`email` AS `email`,`usuarios_gestores`.`nombre` AS `nombre`,`usuarios_gestores`.`apellidos` AS `apellidos`,`usuarios_gestores`.`telefono` AS `telefono`,`usuarios_gestores`.`password` AS `password`,`usuarios_gestores`.`rol` AS `rol` from `usuarios_gestores`  ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `usuarios_gestores`
---
-DROP TABLE IF EXISTS `usuarios_gestores`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios_gestores`  AS SELECT `gestores`.`id` AS `id`, `gestores`.`email` AS `email`, `gestores`.`nombre` AS `nombre`, `gestores`.`apellidos` AS `apellidos`, `gestores`.`telefono` AS `telefono`, `cuentas`.`password` AS `password`, 'gestor' AS `rol` FROM (`gestores` join `cuentas` on(`gestores`.`email` = `cuentas`.`email`)) ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `usuarios_vendedores`
---
-DROP TABLE IF EXISTS `usuarios_vendedores`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `usuarios_vendedores`  AS SELECT `vendedores`.`id` AS `id`, `vendedores`.`email` AS `email`, `vendedores`.`nombre` AS `nombre`, `vendedores`.`apellidos` AS `apellidos`, `vendedores`.`telefono` AS `telefono`, `cuentas`.`password` AS `password`, 'vendedor' AS `rol` FROM (`vendedores` join `cuentas` on(`vendedores`.`email` = `cuentas`.`email`)) ;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`nombre`);
-
---
--- Indices de la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  ADD PRIMARY KEY (`email`);
-
---
--- Indices de la tabla `gestores`
---
-ALTER TABLE `gestores`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_gestor_cuenta` (`email`);
-
---
--- Indices de la tabla `menciones_clientes`
---
-ALTER TABLE `menciones_clientes`
-  ADD UNIQUE KEY `nota` (`nota`,`cliente`),
-  ADD KEY `fk_mencion_cliente` (`cliente`);
-
---
--- Indices de la tabla `menciones_vendedores`
---
-ALTER TABLE `menciones_vendedores`
-  ADD UNIQUE KEY `nota` (`nota`,`vendedor`),
-  ADD KEY `fk_mencion_vendedor` (`vendedor`);
-
---
--- Indices de la tabla `menciones_ventas`
---
-ALTER TABLE `menciones_ventas`
-  ADD UNIQUE KEY `nota` (`nota`,`venta`),
-  ADD KEY `fk_mencion_venta` (`venta`);
-
---
--- Indices de la tabla `notas`
---
-ALTER TABLE `notas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_nota_autor` (`autor`);
-
---
--- Indices de la tabla `vendedores`
---
-ALTER TABLE `vendedores`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_vendedor_cuenta` (`email`);
-
---
--- Indices de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_venta_vendedor` (`vendedor`),
-  ADD KEY `fk_venta_cliente` (`cliente`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `gestores`
---
-ALTER TABLE `gestores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `notas`
---
-ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `vendedores`
---
-ALTER TABLE `vendedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `ventas`
---
-ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `gestores`
---
-ALTER TABLE `gestores`
-  ADD CONSTRAINT `fk_gestor_cuenta` FOREIGN KEY (`email`) REFERENCES `cuentas` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `menciones_clientes`
---
-ALTER TABLE `menciones_clientes`
-  ADD CONSTRAINT `fk_mencion_cliente` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_mencion_nota` FOREIGN KEY (`nota`) REFERENCES `notas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `menciones_vendedores`
---
-ALTER TABLE `menciones_vendedores`
-  ADD CONSTRAINT `fk_mencion_vendedor` FOREIGN KEY (`vendedor`) REFERENCES `vendedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_mencion_vendedor_nota` FOREIGN KEY (`nota`) REFERENCES `notas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `menciones_ventas`
---
-ALTER TABLE `menciones_ventas`
-  ADD CONSTRAINT `fk_mencion_venta` FOREIGN KEY (`venta`) REFERENCES `ventas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_mencion_venta_nota` FOREIGN KEY (`nota`) REFERENCES `notas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `notas`
---
-ALTER TABLE `notas`
-  ADD CONSTRAINT `fk_nota_autor` FOREIGN KEY (`autor`) REFERENCES `gestores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `vendedores`
---
-ALTER TABLE `vendedores`
-  ADD CONSTRAINT `fk_vendedor_cuenta` FOREIGN KEY (`email`) REFERENCES `cuentas` (`email`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `fk_venta_cliente` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_venta_vendedor` FOREIGN KEY (`vendedor`) REFERENCES `vendedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
