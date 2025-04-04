@@ -18,10 +18,14 @@ if ($conn->connect_error) {
 }
 // endregion
 
-$sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND `password` = '" . $_POST['password'] . "'";
-$result = $conn->query($sql);
+/* $sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND `password` = SHA1('" . $_POST['password'] . "')";
+echo $sql;
+$result = $conn->query($sql); */
 
-if ($result->num_rows == 0) {
+$sentencia = "SELECT * FROM usuarios WHERE email = ? AND password = SHA1(?)";
+$result = $conn->execute_query($sentencia, array($_POST['usuario'], $_POST['password']));
+
+if ($result->num_rows != 1) {
   header('Location: ../');
 }
 
