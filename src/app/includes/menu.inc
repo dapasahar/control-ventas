@@ -17,5 +17,18 @@ require_once 'control-ventas.inc';
     <a href="./">
         <img src="https://placehold.co/100x70" alt="Logotipo">
     </a>
-    <div>Bienvenido <?php echo $userdata['nombre'] . " " . $userdata['apellidos']; ?></div>
+    
+    <nav>
+        <ul>
+            <li><a href="./ventas.php">Ventas</a></li>
+            <li><a href="./notas.php">Notas</a></li>
+        </ul>
+    </nav>
+    
+    <button popovertarget="menu-usuario">Usuario</button>
+    <div id="menu-usuario" popover>
+        <div>Bienvenido<br><?php echo $userdata['nombre'] . " " . $userdata['apellidos']; ?></div>
+        <div><a href="./mi-perfil.php">Mi perfil</a></div>
+        <div><a href="./logout.php">Salir</a></div>
+    </div>
 </header>
