@@ -1,13 +1,10 @@
 <?php
-if (empty($_POST['usuario']) || empty($_POST['password'])) {
+// TODO: Gestionar sesiones y usuarios
+/*if (empty($_POST['usuario']) || empty($_POST['password'])) {
   header('Location: ../');
 }
 
 include 'control-ventas.inc';
-
-/* $sql = "SELECT * FROM `usuarios` WHERE `email` = '" . $_POST['usuario'] . "' AND `password` = SHA1('" . $_POST['password'] . "')";
-echo $sql;
-$result = $conn->query($sql); */
 
 $sentencia = "SELECT * FROM usuarios WHERE email = ? AND password = SHA1(?)";
 $result = $conn->execute_query($sentencia, array($_POST['usuario'], $_POST['password']));
@@ -16,7 +13,8 @@ if ($result->num_rows != 1) {
   header('Location: ../');
 }
 
-$userdata = $result->fetch_assoc();
+$userdata = $result->fetch_assoc();*/
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -31,10 +29,7 @@ $userdata = $result->fetch_assoc();
 </head>
 <body>
 
-<header>
-    <img src="https://placehold.co/100x70" alt="Logotipo">
-    <div>Bienvenido <?php echo $userdata['nombre'] . " " . $userdata['apellidos']; ?></div>
-</header>
+<?php include 'includes/menu.inc'; ?>
 
 <div class="contenedor">
   <?php
