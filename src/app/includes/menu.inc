@@ -2,12 +2,20 @@
 
 // FIXME: Usuario de pruebas hasta que se implemente el login
 
+/*$userdata = [
+  'rol' => 'vendedor',
+  'nombre' => 'Vendedor',
+  'apellidos' => 'De Pruebas',
+  'id' => 3
+];*/
+
 $userdata = [
   'rol' => 'gestor',
   'nombre' => 'Gestor',
   'apellidos' => 'De Pruebas',
   'id' => 3
 ];
+
 require_once 'control-ventas.inc';
 
 ?>
@@ -21,7 +29,9 @@ require_once 'control-ventas.inc';
     <nav>
         <ul>
             <li><a href="./ventas.php">Ventas</a></li>
+            <?php if($userdata['rol'] == 'gestor') { ?>
             <li><a href="./notas.php">Notas</a></li>
+            <?php } ?>
         </ul>
     </nav>
     
