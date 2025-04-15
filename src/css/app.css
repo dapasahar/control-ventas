@@ -1,0 +1,36 @@
+:root {
+    --filtros-width: 300px;
+}
+
+@media screen and (max-width: 450px) {
+    :root {
+        --filtros-width: 0;
+    }
+}
+
+.dos-columnas {
+    border: solid 1px black;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.filtros {
+    background-color: lightgray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--filtros-width);
+}
+
+.contenido {
+    background-color: aliceblue;
+    position: absolute;
+    top: 0;
+    left: var(--filtros-width);
+    right: 0;
+    bottom: 0;
+}
