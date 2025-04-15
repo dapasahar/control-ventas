@@ -32,6 +32,23 @@
                 ?>
             </select>
         </label>
+
+        <br>
+        <label>
+            Cliente:<br>
+            <select>
+              <?php
+              $archivoClientes = file_get_contents("../api/v0.0/data/clientes.json");
+              $clientes = json_decode($archivoClientes);
+              foreach ($clientes as $cliente) {
+                echo '<option value="' . $cliente->nombre . '">' . $cliente->nombre . '</option>';
+              }
+              ?>
+            </select>
+        </label>
+        
+        
+        
     </div>
     <div class="contenido">
 
