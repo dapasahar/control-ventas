@@ -34,3 +34,44 @@
     right: 0;
     bottom: 0;
 }
+
+form {
+    padding: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1ch;
+}
+
+form label {
+    width: 9ch;
+}
+
+form input,
+form select {
+    flex-grow: 1;
+    min-width: 15ch;
+}
+
+form input[type=submit] {
+    min-width: 10ch;
+    max-width: 11ch;
+    margin-inline: auto;
+}
+
+form textarea {
+    width: 100%;
+    field-sizing: content;
+    min-height: 3em;
+}
+
+
+
+
+
+
+
+
+
+
+
