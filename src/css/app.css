@@ -65,7 +65,45 @@ form textarea {
     min-height: 3em;
 }
 
+#output {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
+    padding: 1em;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 0 rgba(0 0 0 / .2);
+    text-align: center;
+}
+
+#output::backdrop {
+    background-color: rgba(0, 0, 20, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.mensaje {
+    margin-bottom: 1em;
+}
+
+#output.ok {
+    background-color: rgb(23 117 9);
+    color: rgb(200, 238, 194);
+}
+
+#output.error {
+    background-color: rgb(169, 37, 14);
+    color: rgb(255 195 185);
+}
+
+#output button {
+    padding-inline: 2em;
+    background-color: rgba(0 0 0 / .3);
+    color: rgba(255 255 255 / .8);
+    border: 1px solid rgba(0 0 0 / .5);
+    border-radius: 3px;
+}
 
 
 
